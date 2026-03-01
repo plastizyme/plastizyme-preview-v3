@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plastizyme | DIY Enzyme Kit Prototype on Kickstarter</title>
+  <meta name="description" content="Plastizyme is building a DIY plastic-degrading enzyme kit prototype. Back us on Kickstarter and follow project updates as we build in public." />
+  <meta property="og:title" content="Plastizyme | DIY Enzyme Kit Prototype on Kickstarter" />
+  <meta property="og:description" content="Founder-led, prototype-stage biotech project. Back our Kickstarter to help build and test the first kit prototype." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://plastizyme.com/plastizyme-preview-v3/" />
+  <meta property="og:image" content="https://plastizyme.com/product-image-1.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Plastizyme | DIY Enzyme Kit Prototype on Kickstarter" />
+  <meta name="twitter:description" content="Back our Kickstarter and follow prototype updates." />
+  <meta name="twitter:image" content="https://plastizyme.com/product-image-1.jpg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f7f4;
+      --paper: #fefefc;
+      --surface: #ffffff;
+      --surface2: #f2f7f4;
+      --text: #182023;
+      --muted: #5b6870;
+      --border: #dbe2df;
+      --accent: #0f9d63;
+      --accent2: #0a6fa4;
+      --shadow: 0 8px 24px rgba(17, 32, 28, 0.08);
+      --focus: #0f6fff;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { overflow-x: hidden; }
+    body {
+      margin: 0;
+      width: 100vw;
+      overflow-x: hidden;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg), #eef4ef);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.24;
+      background-image:
+        linear-gradient(to right, rgba(21, 58, 76, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(21, 58, 76, 0.03) 1px, transparent 1px);
+      background-size: 24px 24px;
+      z-index: -1;
+    }
+
+    .container { width: min(var(--max), 92vw); margin: 0 auto; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
+    .status-line {
+      text-align: center;
+      font-size: .9rem;
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--border);
+      background: #f0f6f1;
+      color: #385448;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(254, 254, 252, .9);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      min-height: 72px;
+      flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand { display: inline-flex; gap: 10px; align-items: center; font-weight: 700; text-decoration: none; }
+    .brand img { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border); }
+
+    .menu-btn { display:none; border:1px solid var(--border); background:#fff; color:var(--text); border-radius:8px; min-height:44px; padding:.5rem .8rem; font-weight:700; }
+    .nav-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; max-width: 100%; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-weight: 500; white-space: nowrap; }
+
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      text-decoration: none;
+      min-height: 44px;
+      padding: .7rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-secondary { background: #fff; border-color: var(--border); color: var(--text); }
+
+    .hero {
+      padding: 34px 0 24px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+    @media (max-width: 520px) { .badge-row { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; } }
+    .badge { border: 1px solid var(--border); background: var(--paper); border-radius: 999px; padding: 4px 10px; font-size: .78rem; font-weight: 700; color: #355045; }
+
+    h1 { margin: 10px 0; line-height: 1.15; font-size: clamp(2rem, 4vw, 3.35rem); }
+    h2 { margin: 0 0 8px; font-size: clamp(1.45rem, 2.4vw, 2rem); }
+    h3 { margin: 0 0 6px; }
+    p { margin: 0 0 12px; }
+    .muted { color: var(--muted); }
+
+    .icon-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;}
+    .icon-card{display:flex;gap:10px;align-items:flex-start;border:1px dashed var(--border);background:var(--surface2);border-radius:12px;padding:10px;}
+    .icon-card svg{width:28px;height:28px;stroke:#356258;fill:none;stroke-width:1.8;flex-shrink:0;}
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+
+    .hero-media img { border-radius: 12px; border: 1px solid var(--border); }
+
+    section { padding: 18px 0; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+    .roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+    .media-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .video-wrap { position: relative; width:100%; padding-bottom:56.25%; overflow:hidden; border:1px solid var(--border); border-radius:12px; background:#000; }
+    .video-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .media-image img { border-radius: 12px; border:1px solid var(--border); width:100%; object-fit:cover; max-height:280px; }
+    .media-caption { font-size:.88rem; color:var(--muted); margin-top:6px; }
+
+    details { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; margin-bottom: 10px; }
+    summary { cursor: pointer; font-weight: 700; }
+
+    .final-cta {
+      text-align: center;
+      background: linear-gradient(160deg, #edf8f2, #f8fbf8);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    footer {
+      margin-top: 22px;
+      border-top: 1px solid var(--border);
+      padding: 18px 0 26px;
+      color: var(--muted);
+      font-size: .93rem;
+      background: var(--paper);
+    }
+
+    .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+    .form-inline { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; margin-top: 10px; }
+    .form-inline input, .stack-form input {
+      min-height: 44px; border-radius: 10px; border: 1px solid var(--border); padding: 10px; background: #fff; color: var(--text);
+    }
+
+    .stack-form { display: grid; gap: 10px; }
+
+    .form-msg { min-height: 24px; font-size: .9rem; }
+    .form-msg.error { color: #b73333; }
+    .form-msg.success { color: #1b7e56; }
+    .input-error { border-color:#b73333 !important; background:#fff6f6 !important; }
+
+    .honeypot { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
+
+    @media (max-width: 1200px) { .container { width:min(var(--max),94vw);} }
+    @media (max-width: 1024px) { h1{font-size:clamp(2rem,3.7vw,2.8rem);} }
+    @media (max-width: 960px) {
+      .hero, .grid-3, .grid-2, .roadmap, .media-grid { grid-template-columns: 1fr; }
+      .hero{gap:14px;}
+      .form-inline { grid-template-columns: 1fr; }
+      .form-inline .btn { width: 100%; }
+      .menu-btn { display:inline-flex; }
+      .nav-links { display:none; position:absolute; left:0; right:0; top:72px; padding:14px 4vw; background:var(--paper); border-bottom:1px solid var(--border); flex-direction:column; align-items:flex-start; font-size: .95rem; }
+      .nav-links.open { display:flex; }
+    }
+    @media (max-width: 768px) { h1{font-size:clamp(1.7rem,7vw,2.2rem);} }
+    @media (max-width: 480px) { .card{padding:12px;} .btn{width:100%;} }
+  </style>
+</head>
+<body>
+  <div class="status-line">Prototype status: Pre-build campaign stage • Last updated: <span id="lastUpdated">March 2026</span></div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top"><img src="/logo.png" alt="Plastizyme logo" /><span>Plastizyme</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="#kit">The Kit</a>
+        <a href="#science">Science</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#faq">FAQ</a>
+        <a href="#updates">Updates</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="https://www.kickstarter.com/projects/plastizyme/help-us-build-a-diy-plastic-degrading-enzyme-kit-prototype" target="_blank" rel="noopener noreferrer">Back on Kickstarter</a>
+        <a class="btn btn-secondary" href="#updates">Get updates</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="top">
+    <section class="hero">
+      <div>
+        <div class="badge-row" aria-label="Trust badges">
+          <span class="badge">Prototype stage</span>
+          <span class="badge">Founder-led</span>
+          <span class="badge">Building in public</span>
+          <span class="badge">Small goal: $3,000</span>
+        </div>
+        <h1>Back our DIY plastic-degrading enzyme kit prototype on Kickstarter.</h1>
+        <p class="muted">Plastizyme is an early-stage biotech project exploring PETase-based PET breakdown into building blocks like TPA and EG. We’re fundraising publicly to build and test the first prototype responsibly.</p>
+        <p>
+          <a class="btn btn-primary" href="https://www.kickstarter.com/projects/plastizyme/help-us-build-a-diy-plastic-degrading-enzyme-kit-prototype" target="_blank" rel="noopener noreferrer">Back on Kickstarter</a>
+          <a class="btn btn-secondary" href="#updates">Join email list</a>
+        </p>
+        <form class="form-inline js-update-form" data-source="hero" novalidate>
+          <input type="text" name="botField" class="honeypot" autocomplete="off" tabindex="-1" aria-hidden="true" />
+          <input type="text" name="firstName" placeholder="First name (optional)" autocomplete="given-name" />
+          <input type="email" name="email" placeholder="Email for project updates" required autocomplete="email" />
+          <button class="btn btn-primary" type="submit">Get updates</button>
+          <div class="form-msg" aria-live="polite"></div>
+        </form>
+        <p class="muted" style="font-size:.88rem;">Project updates only.</p>
+      </div>
+      <div class="hero-media card">
+        <img src="/product-image-1.jpg" alt="Plastizyme prototype concept image" />
+      </div>
+    </section>
+
+    <section id="kickstarter" class="card">
+      <h2>Kickstarter first: why we’re fundraising publicly</h2>
+      <p class="muted">Backer support funds prototype materials, enzyme testing consumables, and transparent milestone updates.</p>
+      <div class="media-grid">
+        <div>
+          <div class="video-wrap">
+            <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/nWfBvRm4640" title="Founder video demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="media-caption">Founder video context for early PETase demo conditions (educational reference).</p>
+        </div>
+        <figure class="media-image">
+          <img src="/product-image-1.jpg" alt="Prototype product concept image" />
+          <figcaption class="media-caption">Prototype product concept image used for campaign storytelling.</figcaption>
+        </figure>
+      </div>
+      <a class="btn btn-primary" href="https://www.kickstarter.com/projects/plastizyme/help-us-build-a-diy-plastic-degrading-enzyme-kit-prototype" target="_blank" rel="noopener noreferrer">Back on Kickstarter</a>
+    </section>
+
+
+    <section id="founder" class="grid-2">
+      <article class="card">
+        <h2>From the founder</h2>
+        <p class="muted">I started Plastizyme to test a simple idea in public: can we make enzyme-based PET recycling concepts easier to understand and prototype at small scale?</p>
+        <p class="muted">This campaign is intentionally small. I’m not trying to present a finished company — I’m trying to build a transparent first prototype with community support and honest progress reports.</p>
+      </article>
+      <article class="card">
+        <h2>Build log</h2>
+        <ul>
+          <li><strong>Mar 2026:</strong> Finalized v3 kit concept page and founder demo embed.</li>
+          <li><strong>Feb 2026:</strong> Confirmed campaign scope and initial materials budget.</li>
+          <li><strong>Jan 2026:</strong> Shared first public prototype narrative and invited feedback.</li>
+        </ul>
+        <p><a href="https://www.kickstarter.com/projects/plastizyme/help-us-build-a-diy-plastic-degrading-enzyme-kit-prototype" target="_blank" rel="noopener noreferrer">View Kickstarter campaign updates</a></p>
+      </article>
+    </section>
+
+    <section class="card" aria-label="Core concepts">
+      <h2>Core concepts at a glance</h2>
+      <div class="icon-row">
+        <div class="icon-card">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12 3h8M13 3v6l-4 6a8 8 0 0 0 7 12h0a8 8 0 0 0 7-12l-4-6V3"/><path d="M11 19h10"/></svg>
+          <div><strong>PET feedstock</strong><br/><span class="muted">PET bottle waste is our starting point.</span></div>
+        </div>
+        <div class="icon-card">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="10" cy="10" r="3"/><circle cx="22" cy="10" r="3"/><circle cx="16" cy="21" r="3"/><path d="M12.5 11.5 14 18M19.5 11.5 18 18M13 10h6"/></svg>
+          <div><strong>Enzyme context</strong><br/><span class="muted">PETase-related conditions are tested in prototype workflow.</span></div>
+        </div>
+        <div class="icon-card">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 4h12M12 4v7l-5 12a3 3 0 0 0 3 5h12a3 3 0 0 0 3-5l-5-12V4"/><path d="M10 20h12"/></svg>
+          <div><strong>Bench prototype</strong><br/><span class="muted">Small, transparent, build-in-public milestone approach.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kit">
+      <h2>The kit (prototype concept)</h2>
+      <div class="grid-3">
+        <article class="card"><h3>What it is</h3><p class="muted">A prototype workflow for PETase-driven PET breakdown experiments.</p></article>
+        <article class="card"><h3>Who it serves</h3><p class="muted">Backers and curious makers following practical biotech build steps.</p></article>
+        <article class="card"><h3>What it enables</h3><p class="muted">Hands-on learning around PET feedstock, enzyme context, and recycling pathways.</p></article>
+      </div>
+    </section>
+
+    <section id="science">
+      <h2>Science in plain terms</h2>
+      <p class="muted">PETase is associated with PET breakdown. We communicate this as prototype-stage experimentation, not guaranteed industrial performance.</p>
+      <div class="grid-3">
+        <article class="card"><h3>Step 1</h3><p class="muted">Prepare PET test input and baseline observations.</p></article>
+        <article class="card"><h3>Step 2</h3><p class="muted">Apply controlled enzyme conditions.</p></article>
+        <article class="card"><h3>Step 3</h3><p class="muted">Evaluate trends against PET to TPA + EG pathways.</p></article>
+      </div>
+      <p class="muted" style="font-size:.9rem;">“24 hour demo” references are educational context only.</p>
+    </section>
+
+    <section id="funding">
+      <h2>What backing funds + why Kickstarter</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>What backing funds</h3>
+          <ul>
+            <li>Prototype materials and containers</li>
+            <li>Initial enzyme and PET consumables</li>
+            <li>Simple logging + updates in public</li>
+            <li>Backer communication logistics</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Why Kickstarter now</h3>
+          <ul>
+            <li>Validates interest before over-building</li>
+            <li>Creates accountability with transparent milestones</li>
+            <li>Keeps scope realistic and founder-led</li>
+          </ul>
+          <a class="btn btn-primary" href="https://www.kickstarter.com/projects/plastizyme/help-us-build-a-diy-plastic-degrading-enzyme-kit-prototype" target="_blank" rel="noopener noreferrer">Back on Kickstarter</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <h2>Roadmap</h2>
+      <div class="roadmap">
+        <article class="card"><h3>Now</h3><p class="muted">Campaign, planning, and prototype specification.</p></article>
+        <article class="card"><h3>Next</h3><p class="muted">Assemble prototype and run first documented tests.</p></article>
+        <article class="card"><h3>Later</h3><p class="muted">Iterate from findings and publish learnings.</p></article>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>FAQ</h2>
+      <details><summary>Is this a finished commercial product?</summary><p class="muted">No. This is prototype-stage and we’ll share progress transparently.</p></details>
+      <details><summary>What is the current scope?</summary><p class="muted">Early PET-focused experimentation and prototype education.</p></details>
+      <details><summary>How do updates work?</summary><p class="muted">Join the email list for periodic progress updates.</p></details>
+    </section>
+
+    <section id="updates" class="card">
+      <h2>Get project updates</h2>
+      <form class="stack-form js-update-form" data-source="footer" novalidate>
+        <input type="text" name="botField" class="honeypot" autocomplete="off" tabindex="-1" aria-hidden="true" />
+        <input type="text" name="firstName" placeholder="First name (optional)" autocomplete="given-name" />
+        <input type="email" name="email" required placeholder="Email (required)" autocomplete="email" />
+        <button type="submit" class="btn btn-primary">Subscribe for updates</button>
+        <div class="form-msg" aria-live="polite"></div>
+        <p class="muted" style="font-size:.88rem;">Project updates only.</p>
+      </form>
+    </section>
+
+    <section class="final-cta">
+      <h2>If you want this prototype built, back us now.</h2>
+      <p class="muted">Every pledge helps move this from concept to tested prototype.</p>
+      <p>
+        <a class="btn btn-primary" href="https://www.kickstarter.com/projects/plastizyme/help-us-build-a-diy-plastic-degrading-enzyme-kit-prototype" target="_blank" rel="noopener noreferrer">Back on Kickstarter</a>
+        <a class="btn btn-secondary" href="#updates">Get updates</a>
+      </p>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container footer-row">
+      <div><strong>Plastizyme</strong><br />Founder-led prototype stage project.</div>
+      <div>
+        <a href="mailto:hello@plastizyme.com">Contact</a> ·
+        <a href="#updates">Updates</a> ·
+        <a href="https://www.kickstarter.com/projects/plastizyme/help-us-build-a-diy-plastic-degrading-enzyme-kit-prototype" target="_blank" rel="noopener noreferrer"><strong>Back on Kickstarter</strong></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const GOOGLE_FORM_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeDiuTbWxq5goPf8VU1zaawrk_Nq3hOHC9uUgYnvjUZYf0puQ/formResponse";
+    const ENTRY_NAME = "entry.1625098546";
+    const ENTRY_EMAIL = "entry.694019218";
+
+    const now = new Date();
+    document.getElementById('lastUpdated').textContent = `${now.toLocaleString('default', {month:'long'})} ${now.getFullYear()}`;
+
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    const cooldownMap = new WeakMap();
+
+    function setMessage(form, text = '', kind = '') {
+      const el = form.querySelector('.form-msg');
+      if (!el) return;
+      el.textContent = text;
+      el.classList.remove('error', 'success');
+      if (kind) el.classList.add(kind);
+    }
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+    }
+
+    function markEmailValidity(form, shouldShow = false) {
+      const emailInput = form.querySelector('input[name="email"]');
+      if (!emailInput) return true;
+      const valid = isValidEmail(emailInput.value || '');
+      emailInput.classList.toggle('input-error', shouldShow && !valid);
+      return valid;
+    }
+
+    async function submitForm(form) {
+      const emailInput = form.querySelector('input[name="email"]');
+      const firstNameInput = form.querySelector('input[name="firstName"]');
+      const honeypotInput = form.querySelector('input[name="botField"]');
+      const submitButton = form.querySelector('button[type="submit"]');
+      const source = form.dataset.source || 'unknown';
+
+      const email = (emailInput?.value || '').trim();
+      const firstName = (firstNameInput?.value || '').trim();
+      const honeypot = (honeypotInput?.value || '').trim();
+
+      if (honeypot) return;
+
+      const valid = markEmailValidity(form, true);
+      if (!valid) {
+        setMessage(form, 'Please enter a valid email address.', 'error');
+        emailInput?.focus();
+        return;
+      }
+
+      const last = cooldownMap.get(form) || 0;
+      if (Date.now() - last < 8000) {
+        setMessage(form, 'Please wait a few seconds before trying again.', 'error');
+        return;
+      }
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+      }
+      setMessage(form, '');
+
+      const timestamp = new Date().toISOString();
+      const namePayload = firstName ? `${firstName} [${source}] [${timestamp}]` : `[${source}] [${timestamp}]`;
+
+      const payload = new FormData();
+      payload.append(ENTRY_NAME, namePayload);
+      payload.append(ENTRY_EMAIL, email);
+
+      try {
+        await fetch(GOOGLE_FORM_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: payload
+        });
+        cooldownMap.set(form, Date.now());
+        form.reset();
+        markEmailValidity(form, false);
+        setMessage(form, 'Thanks — you are on the updates list.', 'success');
+      } catch (err) {
+        setMessage(form, 'Submission failed. Please retry in a moment.', 'error');
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = submitButton.dataset.defaultText || 'Get updates';
+        }
+      }
+    }
+
+    document.querySelectorAll('.js-update-form').forEach((form) => {
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) btn.dataset.defaultText = btn.textContent;
+      const emailInput = form.querySelector('input[name="email"]');
+
+      emailInput?.addEventListener('blur', () => {
+        if (!emailInput.value.trim()) return;
+        const valid = markEmailValidity(form, true);
+        if (!valid) setMessage(form, 'Please enter a valid email address.', 'error');
+        else setMessage(form, '');
+      });
+
+      emailInput?.addEventListener('input', () => {
+        if (!emailInput.classList.contains('input-error')) return;
+        const valid = markEmailValidity(form, true);
+        if (valid) setMessage(form, '');
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitForm(form);
+      });
+    });
+  </script>
+</body>
+</html>
